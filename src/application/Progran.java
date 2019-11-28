@@ -1,9 +1,15 @@
 package application;
 
+
+import xadrez.PartidaXadrez;
+
 public class Progran {
 
 	public static void main(String[] args) {
-		System.out.println("OLA MUNDO" );
-	}
+		
+		PartidaXadrez partidaXadrez = new PartidaXadrez();
+		UI.printTabuleiro(partidaXadrez.getPecas());
+	
 
+}
 }

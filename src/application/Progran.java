@@ -1,15 +1,28 @@
 package application;
 
 
-import xadrez.PartidaXadrez;
+import java.util.Scanner;
+
+import chess.ChessMatch;
+import chess.ChessPiece;
+import chess.ChessPosition;
 
 public class Progran {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ChessMatch chessMatch = new ChessMatch();
 		
-		PartidaXadrez partidaXadrez = new PartidaXadrez();
-		UI.printTabuleiro(partidaXadrez.getPecas());
-	
+		while(true) {
+			UI.printBoard(chessMatch.getPieces());
+			System.out.println();
+			System.out.print("Origem: ");
+			ChessPosition source = UI.readChessPosition(sc);
+			 System.out.println();
+			 System.out.print("Destino: ");
+			ChessPosition target = UI.readChessPosition(sc);
 
-}
+			ChessPiece capturePiece = chessMatch.performeChessMove(source, target);
+		}		
+   }
 }

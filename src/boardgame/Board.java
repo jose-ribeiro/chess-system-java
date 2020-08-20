@@ -3,7 +3,7 @@ package boardgame;
 public class Board {
 	private int rows;
 	private int columns;
-	private Piece[][] pices;
+	private Piece[][] pieces;
 	
 	public Board(int rows, int columns) {
 		if (rows < 1 || columns <1) {
@@ -11,7 +11,7 @@ public class Board {
 		}
 		this.rows = rows;
 		this.columns = columns;
-		pices = new Piece [rows][columns];
+		pieces = new Piece [rows][columns];
 	}
 	
 	public int getRows() {
@@ -26,18 +26,19 @@ public class Board {
 		if(!positionExists(row, column)) {
 			throw new BoardException("Position not on the board");
 		}
-		 return pices [row][column];
+		 return pieces [row][column];
 	}
 	 public Piece piece (Position position) {
 		 if(!positionExists(position)) {
 				throw new BoardException("There is already a piece os position" + position);
 			}
-	 return pices [position.getRow()][position.getColumn()];//retorno da peça na matrix
+	 return pieces [position.getRow()][position.getColumn()];//retorno da peça na matrix
 	 }
 	 public void placePiece(Piece piece, Position position) {
-		 pices[position.getRow()][position.getColumn()] = piece;
+		 pieces[position.getRow()][position.getColumn()] = piece;
 		 piece.position = position;
 	 }
+		 
 	 public Piece removePiece(Position position) {
 		 if(!positionExists(position)) {
 			 throw new BoardException("Position not on the board");
@@ -47,7 +48,7 @@ public class Board {
 		 }
 		 Piece aux = piece(position);
 		 aux.position = null;
-		 pices[position.getRow()][position.getColumn()] = null;
+		 pieces[position.getRow()][position.getColumn()] = null;
 		 return aux;
 		 
 	 }
